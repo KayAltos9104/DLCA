@@ -1,0 +1,15 @@
+E:\csharp\DLCA\DLCA\bin\Debug\net6.0\DLCA.exe
+E:\csharp\DLCA\DLCA\bin\Debug\net6.0\DLCA.deps.json
+E:\csharp\DLCA\DLCA\bin\Debug\net6.0\DLCA.runtimeconfig.json
+E:\csharp\DLCA\DLCA\bin\Debug\net6.0\DLCA.dll
+E:\csharp\DLCA\DLCA\bin\Debug\net6.0\ref\DLCA.dll
+E:\csharp\DLCA\DLCA\bin\Debug\net6.0\DLCA.pdb
+E:\csharp\DLCA\DLCA\obj\Debug\net6.0\DLCA.csproj.AssemblyReference.cache
+E:\csharp\DLCA\DLCA\obj\Debug\net6.0\DLCA.GeneratedMSBuildEditorConfig.editorconfig
+E:\csharp\DLCA\DLCA\obj\Debug\net6.0\DLCA.AssemblyInfoInputs.cache
+E:\csharp\DLCA\DLCA\obj\Debug\net6.0\DLCA.AssemblyInfo.cs
+E:\csharp\DLCA\DLCA\obj\Debug\net6.0\DLCA.csproj.CoreCompileInputs.cache
+E:\csharp\DLCA\DLCA\obj\Debug\net6.0\DLCA.dll
+E:\csharp\DLCA\DLCA\obj\Debug\net6.0\ref\DLCA.dll
+E:\csharp\DLCA\DLCA\obj\Debug\net6.0\DLCA.pdb
+E:\csharp\DLCA\DLCA\obj\Debug\net6.0\DLCA.genruntimeconfig.cache
