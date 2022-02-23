@@ -8,10 +8,9 @@ namespace DLCA
 {
     internal class General
     {
-        public static void Start(int d_of_cell, int x, int y, out int[,] field)
+        public static void Start(int d_of_cell, int x, int y, int[,] field)
         {
-            int[,] _field = new int[20, 20];
-            field = _field;
+            int[,] _field = field;
 
             SpawnTheCell(d_of_cell, _field, x, y);
         }

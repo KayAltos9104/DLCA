@@ -10,6 +10,14 @@ namespace DLCA
     {
         static void Main()
         {
+            Console.WriteLine("Введите размеры поля в формате 1x2");
+
+            string[] field_sizes = Console.ReadLine().Split(new char[] { 'x', 'X' });
+
+            int a = int.Parse(field_sizes[0]);
+            int b = int.Parse(field_sizes[1]);
+
+            int[,] field = new int[a, b];
             int d_of_cell;
 
             do
@@ -22,7 +30,7 @@ namespace DLCA
 
             Input.GetNullCoords(Console.ReadLine(), out int x, out int y);
 
-            General.Start(d_of_cell, x, y, out int[,] field);
+            General.Start(d_of_cell, x, y, field);
 
             Render.Draw(field);
         }
