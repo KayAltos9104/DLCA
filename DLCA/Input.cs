@@ -16,7 +16,6 @@ namespace DLCA
             {
                 case 0:
                     d_of_cell = 2;
-                    Console.WriteLine("Только нечётные диаметры!");
                     break;
 
                 default:

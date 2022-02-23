@@ -8,13 +8,12 @@ namespace DLCA
 {
     internal class General
     {
-        public static void Start(int d_of_cell, int x, int y)
+        public static void Start(int d_of_cell, int x, int y, out int[,] field)
         {
-            int[,] field = new int[20, 20];
+            int[,] _field = new int[20, 20];
+            field = _field;
 
-            SpawnTheCell(d_of_cell, field, x, y);
-
-            Render.Draw(field);
+            SpawnTheCell(d_of_cell, _field, x, y);
         }
 
         static void SpawnTheCell(int d_of_cell, int[,] field, int x, int y)

@@ -15,12 +15,16 @@ namespace DLCA
             do
             {
                 Input.GetDiameter(Console.ReadLine(), out d_of_cell);
+                if (d_of_cell == 2)
+                    Console.WriteLine("Только нечётные диаметры!");
             }
             while (d_of_cell == 2);
 
             Input.GetNullCoords(Console.ReadLine(), out int x, out int y);
 
-            General.Start(d_of_cell, x, y);
+            General.Start(d_of_cell, x, y, out int[,] field);
+
+            Render.Draw(field);
         }
     }
 }
