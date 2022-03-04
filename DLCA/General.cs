@@ -8,11 +8,10 @@ namespace DLCA
 {
     public class General
     {
+        static List<List<Cell>> List_Of_Cells = new List<List<Cell>>(); // Список списков для клеток (т. к. клетка состоит из нескольких Cell'ов).
 
-        public static void Start(int d_of_cell, int x, int y, Cell[,] field)
+        public static void InitializeField(Cell[,] field)
         {
-            List<List<Cell>> List_Of_Cells = new List<List<Cell>>(); // Список списков для клеток (т. к. клетка состоит из нескольких Cell'ов).
-
             for (int i = 0; i < field.GetLength(0); i++)
             {
                 for (int j = 0; j < field.GetLength(1); j++)
@@ -20,7 +19,10 @@ namespace DLCA
                     field[i, j] = new Cell();
                 }
             }
+        }
 
+        public static void Proceed(int d_of_cell, int x, int y, Cell[,] field)
+        {
             SpawnTheCell(d_of_cell, field, x, y, List_Of_Cells);
         }
 
