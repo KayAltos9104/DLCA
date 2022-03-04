@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DLCA
 {
-    internal class Input
+    public class Input
     {
         public static void GetDiameter(string diameter_of_cell, out int d_of_cell)
         {

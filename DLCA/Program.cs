@@ -8,7 +8,7 @@ namespace DLCA
 {
     class Program
     {
-        static void Main()
+        private static void Main()
         {
             Console.WriteLine("Введите размеры поля в формате 1x2");
 
@@ -17,7 +17,7 @@ namespace DLCA
             int a = int.Parse(field_sizes[0]);
             int b = int.Parse(field_sizes[1]);
 
-            int[,] field = new int[a, b];
+            Cell[,] field = new Cell[a, b];
 
             int d_of_cell;
             int x;
