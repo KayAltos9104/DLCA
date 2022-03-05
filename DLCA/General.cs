@@ -35,7 +35,9 @@ namespace DLCA
 
                 foreach (Cell p_o_c in cells) // Part of cell.
                 {
+                    field[p_o_c.X, p_o_c.Y].SetState(0);
                     p_o_c.Move(field, direction, cells);
+                    field[p_o_c.X, p_o_c.Y].SetState(1);
                 }
 
                 if (direction == 2 || direction == 3) // Если уже был разворот списка, разворачиваем его в исходное состояние, чтобы избежать проблем при...
