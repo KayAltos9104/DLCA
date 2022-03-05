@@ -28,18 +28,20 @@ namespace DLCA
             {
                 int direction = rnd.Next(1, 5);
 
-                if (direction == 2 || direction == 3)
+                if (direction == 2 || direction == 3) // В изначально сформированном списке сначала идут левые клетки. В случае движения влево всё хорошо...
+                    // При движении же вправо идёт накладка и часть клеток уходит в инвиз. Чтобы избежать этого, я обращаю список при движении вправо и вниз...
+                    // и всё хорошо)
                     cells.Reverse();
 
                 foreach (Cell p_o_c in cells) // Part of cell.
                 {
-                    field[p_o_c.X, p_o_c.Y].SetState(0);
-                    p_o_c.Move(field, direction);
-                    field[p_o_c.X, p_o_c.Y].SetState(1);
+                    p_o_c.Move(field, direction, cells);
                 }
 
-                if (direction == 2 || direction == 3)
+                if (direction == 2 || direction == 3) // Если уже был разворот списка, разворачиваем его в исходное состояние, чтобы избежать проблем при...
+                    // движении влево и вверх.
                     cells.Reverse();
+
             }
             Thread.Sleep(500);
         }
