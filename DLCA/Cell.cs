@@ -26,8 +26,10 @@ namespace DLCA
             State = state;
         }
 
-        public void Move(Cell[,] field, int direction, List<Cell> cells)
+        public void Move(Cell[,] field, int direction, List<Cell> cells, out bool flag)
         {
+            bool _flag = false;
+
             int X_Max = cells.Max(Cell => Cell.X);
             int X_min = cells.Min(Cell => Cell.X);
             int Y_Max = cells.Max(Cell => Cell.Y);
@@ -37,30 +39,37 @@ namespace DLCA
                 direction == 1 && X_min - 1 >= 0 ||
                 direction == 2 && Y_Max + 1 < field.GetLength(0) ||
                 direction == 4 && Y_min - 1 >= 0)
+                _flag = true;
+            else
+                _flag = false;
+
+            flag = _flag;
+
+            if (flag == false)
+                return;
+
+            switch (direction)
             {
-                switch (direction)
-                {
-                    case 1:
-                        {
-                            X -= 1;
-                            break;
-                        }
-                    case 2:
-                        {
-                            Y += 1;
-                            break;
-                        }
-                    case 3:
-                        {
-                            X += 1;
-                            break;
-                        }
-                    case 4:
-                        {
-                            Y -= 1;
-                            break;
-                        }
-                }
+                case 1:
+                    {
+                        X -= 1;
+                        break;
+                    }
+                case 2:
+                    {
+                        Y += 1;
+                        break;
+                    }
+                case 3:
+                    {
+                        X += 1;
+                        break;
+                    }
+                case 4:
+                    {
+                        Y -= 1;
+                        break;
+                    }
             }
 
         }

@@ -36,7 +36,9 @@ namespace DLCA
                 foreach (Cell p_o_c in cells) // Part of cell.
                 {
                     field[p_o_c.X, p_o_c.Y].SetState(0);
-                    p_o_c.Move(field, direction, cells);
+                    p_o_c.Move(field, direction, cells, out bool flag);
+                    if (flag == false)
+                        return;
                     field[p_o_c.X, p_o_c.Y].SetState(1);
                 }
 
