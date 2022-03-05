@@ -22,7 +22,7 @@ namespace DLCA
             General.InitializeField(field);
             Render.Draw(field);
 
-            while (true)
+            for (int i = 0; i < 2; i++)
             {
 
                 int d_of_cell;
@@ -53,7 +53,7 @@ namespace DLCA
                 }
                 while (input_success != true);
 
-                General.Proceed(d_of_cell, x, y, field);
+                General.Spawn(d_of_cell, x, y, field);
                 Render.Draw(field);
             }
         }

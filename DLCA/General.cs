@@ -21,7 +21,16 @@ namespace DLCA
             }
         }
 
-        public static void Proceed(int d_of_cell, int x, int y, Cell[,] field)
+        private static void Proceed()
+        {
+            while (true)
+            {
+                Thread.Sleep(1000);
+            }
+
+        }
+
+        public static void Spawn(int d_of_cell, int x, int y, Cell[,] field)
         {
             SpawnTheCell(d_of_cell, field, x, y, List_Of_Cells);
         }
@@ -31,29 +40,42 @@ namespace DLCA
             int cell_num = 0;
 
             List_Of_Cells.Add(new List<Cell>());
-            List_Of_Cells[cell_num].Add(new Cell());
-            foreach (Cell c in List_Of_Cells[cell_num])
+
+            int r_of_cell = d_of_cell / 2;
+
+            for (int i = y; i <= y + d_of_cell / 2; i++) // Заполнение клетки вниз.
             {
-                int r_of_cell = d_of_cell / 2;
-
-                for (int i = y; i <= y + d_of_cell / 2; i++) // Заполнение клетки вниз.
+                for (int j = x - r_of_cell; j <= x + r_of_cell; j++)
                 {
-                    for (int j = x - r_of_cell; j <= x + r_of_cell; j++)
-                    {
-                        field[i, j].SetState(1);
-                    }
-                    r_of_cell--;
+                    field[i, j].SetState(1);
                 }
+                r_of_cell--;
+            }
 
-                r_of_cell = d_of_cell / 2;
+            r_of_cell = d_of_cell / 2;
 
-                for (int n = y; n >= y - d_of_cell / 2; n--) // Заполнение клетки выше центра.
+            for (int n = y; n >= y - d_of_cell / 2; n--) // Заполнение клетки выше центра.
+            {
+                for (int m = x - r_of_cell; m <= x + r_of_cell; m++)
                 {
-                    for (int m = x - r_of_cell; m <= x + r_of_cell; m++)
+                    field[n, m].SetState(1);
+                }
+                r_of_cell--;
+            }
+
+            int num_of_part_of_cell = 0;
+
+            for (int i = 0; i < field.GetLength(0); i++)
+            {
+                for (int j = 0; j < field.GetLength(1); j++)
+                {
+                    if (field[i, j].State == 1)
                     {
-                        field[n, m].SetState(1);
+                        List_Of_Cells[cell_num].Add(new Cell());
+                        List_Of_Cells[cell_num][num_of_part_of_cell].X = j;
+                        List_Of_Cells[cell_num][num_of_part_of_cell].Y = i;
+                        num_of_part_of_cell++;
                     }
-                    r_of_cell--;
                 }
             }
 
