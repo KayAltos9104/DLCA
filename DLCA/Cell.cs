@@ -30,26 +30,22 @@ namespace DLCA
             {
                 case 1: // OK.
                     {
-                        if (X - 1 >= 0)
-                            X -= 1;
+                        X -= 1;
                         break;
                     }
                 case 2:
                     {
-                        if (Y + 1 < field.GetLength(0))
-                            Y += 1;
+                        Y += 1;
                         break;
                     }
                 case 3:
                     {
-                        if (X + 1 < field.GetLength(1))
-                            X += 1;
+                        X += 1;
                         break;
                     }
                 case 4: // OK.
                     {
-                        if (Y - 1 >= 0)
-                            Y -= 1;
+                        Y -= 1;
                         break;
                     }
             }

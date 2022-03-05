@@ -34,7 +34,7 @@ namespace DLCA
                     field[p_o_c.X, p_o_c.Y].SetState(1);
                 }
             }
-            Thread.Sleep(1500);
+            Thread.Sleep(500);
         }
 
         public static void Spawn(int d_of_cell, int x, int y, Cell[,] field)
