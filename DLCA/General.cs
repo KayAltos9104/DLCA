@@ -27,12 +27,19 @@ namespace DLCA
             foreach (List<Cell> cells in List_Of_Cells)
             {
                 int direction = rnd.Next(1, 5);
+
+                if (direction == 2 || direction == 3)
+                    cells.Reverse();
+
                 foreach (Cell p_o_c in cells) // Part of cell.
                 {
                     field[p_o_c.X, p_o_c.Y].SetState(0);
                     p_o_c.Move(field, direction);
                     field[p_o_c.X, p_o_c.Y].SetState(1);
                 }
+
+                if (direction == 2 || direction == 3)
+                    cells.Reverse();
             }
             Thread.Sleep(500);
         }
@@ -76,7 +83,7 @@ namespace DLCA
             {
                 for (int j = 0; j < field.GetLength(1); j++)
                 {
-                    if (field[i, j].State == 1)
+                    if (field[j, i].State == 1)
                     {
                         List_Of_Cells[cell_num].Add(new Cell());
                         List_Of_Cells[cell_num][num_of_part_of_cell].X = j;
