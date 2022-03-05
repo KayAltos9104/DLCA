@@ -23,5 +23,11 @@ namespace DLCA
         {
             State = state;
         }
+
+        public void GetCoord(out int x, out int y)
+        {
+            x = X;
+            y = Y;
+        }
     }
 }

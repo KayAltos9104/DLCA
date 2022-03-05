@@ -8,6 +8,7 @@ namespace DLCA
 {
     public class General
     {
+        static Random rnd = new Random();
         static List<List<Cell>> List_Of_Cells = new List<List<Cell>>(); // Список списков для клеток (т. к. клетка состоит из нескольких Cell'ов).
 
         public static void InitializeField(Cell[,] field)
@@ -21,13 +22,50 @@ namespace DLCA
             }
         }
 
-        private static void Proceed()
+        public static void Proceed(Cell[,] field)
         {
-            while (true)
+            foreach (List<Cell> c in List_Of_Cells)
             {
-                Thread.Sleep(1000);
+                int direction = rnd.Next(1, 5);
+                foreach (Cell p_o_c in c) // Part of cell.
+                {
+                    field[p_o_c.X, p_o_c.Y].SetState(0);
+                    Move(p_o_c.X, p_o_c.Y, field, direction);
+                    field[p_o_c.X, p_o_c.Y].SetState(1);
+                }
             }
+            Thread.Sleep(1500);
+        }
 
+        private static void Move(int x, int y, Cell[,] field, int direction)
+        {
+            switch (direction)
+            {
+                case 1:
+                    {
+                        if (x - 1 >= 0)
+                            x -= 1;
+                        break;
+                    }
+                case 2:
+                    {
+                        if (y + 1 < field.GetLength(0))
+                            y += 1;
+                        break;
+                    }
+                case 3:
+                    {
+                        if (x + 1 < field.GetLength(1))
+                            x += 1;
+                        break;
+                    }
+                case 4:
+                    {
+                        if (y - 1 >= 0)
+                            y -= 1;
+                        break;
+                    }
+            }
         }
 
         public static void Spawn(int d_of_cell, int x, int y, Cell[,] field)
