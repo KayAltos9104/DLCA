@@ -22,8 +22,8 @@ namespace DLCA
             General.InitializeField(field);
             Render.Draw(field);
 
-            for (int i = 0; i < 1; i++)
-            {
+            //for (int i = 0; i < 2; i++)
+            //{
 
                 int d_of_cell;
                 int x;
@@ -55,7 +55,7 @@ namespace DLCA
 
                 General.Spawn(d_of_cell, x, y, field);
                 Update(field);
-            }
+            //}
 
             while (true)
             {

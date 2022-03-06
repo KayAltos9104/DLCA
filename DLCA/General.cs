@@ -28,24 +28,70 @@ namespace DLCA
             {
                 int direction = rnd.Next(1, 5);
 
-                if (direction == 2 || direction == 3) // В изначально сформированном списке сначала идут левые клетки. В случае движения влево всё хорошо...
-                    // При движении же вправо идёт накладка и часть клеток уходит в инвиз. Чтобы избежать этого, я обращаю список при движении вправо и вниз...
-                    // и всё хорошо)
+                if (direction == 2 || direction == 3)
                     cells.Reverse();
 
-                foreach (Cell p_o_c in cells) // Part of cell.
+                bool flag = true;
+
+                foreach (Cell pre_checkable in cells)
                 {
-                    field[p_o_c.X, p_o_c.Y].SetState(0);
-                    p_o_c.Move(field, direction, cells, out bool flag);
+                    flag = true;
+                    switch (direction)
+                    {
+                        case 1:
+                            if (pre_checkable.X - 1 >= 0)
+                                flag = true;
+                            else
+                            {
+                                flag = false;
+                                break;
+                            }
+                            break;
+
+                        case 2:
+                            if (pre_checkable.Y + 1 < field.GetLength(0))
+                                flag = true;
+                            else
+                            {
+                                flag = false;
+                                break;
+                            }
+                            break;
+
+                        case 3:
+                            if (pre_checkable.X + 1 < field.GetLength(1))
+                                flag = true;
+                            else
+                            {
+                                flag = false;
+                                break;
+                            }
+                            break;
+
+                        case 4:
+                            if (pre_checkable.Y - 1 >= 0)
+                                flag = true;
+                            else
+                            {
+                                flag = false;
+                                break;
+                            }
+                            break;
+                    }
                     if (flag == false)
-                        return;
-                    field[p_o_c.X, p_o_c.Y].SetState(1);
+                        break;
                 }
 
-                if (direction == 2 || direction == 3) // Если уже был разворот списка, разворачиваем его в исходное состояние, чтобы избежать проблем при...
-                    // движении влево и вверх.
-                    cells.Reverse();
+                if (flag == true)
+                {
+                    foreach (Cell p_o_c in cells) // Part of cell.
+                    {
+                        p_o_c.Move(field, direction);
+                    }
+                }
 
+                if (direction == 2 || direction == 3)
+                    cells.Reverse();
             }
             Thread.Sleep(500);
         }
