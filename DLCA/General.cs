@@ -24,16 +24,18 @@ namespace DLCA
 
         public static void Proceed(Cell[,] field)
         {
-            foreach (List<Cell> cells in List_Of_Cells)
+            foreach (List<Cell> cells in List_Of_Cells) // Движение всех клеток-из-клеток.
             {
                 int direction = rnd.Next(1, 5);
 
-                if (direction == 2 || direction == 3)
+                if (direction == 2 || direction == 3) // В изначально сформированном списке сначала идут левые клетки. В случае движения влево всё хорошо...
+                    // При движении же вправо идёт накладка и часть клеток уходит в инвиз. Чтобы избежать этого, я обращаю список при движении вправо и вниз...
+                    // и всё хорошо)
                     cells.Reverse();
 
                 bool flag = true;
 
-                foreach (Cell pre_checkable in cells)
+                foreach (Cell pre_checkable in cells) // Проверка, не выйдет/не уползёт (не сотрётся ли её часть) ли клетка за границы поля.
                 {
                     flag = true;
                     switch (direction)
@@ -90,11 +92,12 @@ namespace DLCA
                     }
                 }
 
-                if (direction == 2 || direction == 3)
+                if (direction == 2 || direction == 3) // Если уже был разворот списка, разворачиваем его в исходное состояние, чтобы избежать проблем при...
+                    // движении влево и вверх.
                     cells.Reverse();
 
             }
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
         }
 
         public static void Spawn(int d_of_cell, int x, int y, Cell[,] field)
@@ -132,7 +135,7 @@ namespace DLCA
 
             int num_of_part_of_cell = 0;
 
-            for (int i = y - d_of_cell / 2; i <= y + d_of_cell / 2; i++)
+            for (int i = y - d_of_cell / 2; i <= y + d_of_cell / 2; i++) // Добавление только что появившейся клетки в список и сохранение её координат.
             {
                 for (int j = x - d_of_cell / 2; j <= x + d_of_cell / 2; j++)
                 {
