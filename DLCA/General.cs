@@ -92,6 +92,7 @@ namespace DLCA
 
                 if (direction == 2 || direction == 3)
                     cells.Reverse();
+
             }
             Thread.Sleep(500);
         }
@@ -101,10 +102,10 @@ namespace DLCA
             SpawnTheCell(d_of_cell, field, x, y, List_Of_Cells);
         }
 
+        static int cell_num = 0;
+
         private static void SpawnTheCell(int d_of_cell, Cell[,] field, int x, int y, List<List<Cell>> List_Of_Cells)
         {
-            int cell_num = 0;
-
             List_Of_Cells.Add(new List<Cell>());
 
             int r_of_cell = d_of_cell / 2;
@@ -131,9 +132,9 @@ namespace DLCA
 
             int num_of_part_of_cell = 0;
 
-            for (int i = 0; i < field.GetLength(0); i++)
+            for (int i = y - d_of_cell / 2; i <= y + d_of_cell / 2; i++)
             {
-                for (int j = 0; j < field.GetLength(1); j++)
+                for (int j = x - d_of_cell / 2; j <= x + d_of_cell / 2; j++)
                 {
                     if (field[j, i].State == 1)
                     {
